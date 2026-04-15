@@ -18,6 +18,7 @@ const config: QuartzConfig = {
     baseUrl: "gnp-marketing.github.io/quartz",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
+    defaultMode: "light",   // ← 加这一行
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
