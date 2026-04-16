@@ -4,7 +4,7 @@
 
 **Last updated**: 2026-04-16
 
-> 本次更新（2026-04-16）新增「Caption Injection（多模態 G-SEO, 2026）」子分類，包含 2 個新頁面（caption-injection-gseo、mrag-gseo）；並更新 geo-optimization-methods、multimodal-geo、geo-cooperative-vs-adversarial、geo-visibility-metrics。
+> 本次更新（2026-04-16）新增「自我進化框架（AgenticGEO, 2026）」子分類，包含 4 個新頁面（agenticgeo-beihang、map-elites-geo、co-evolving-critic、geo-strategy-genotype）；並更新 agentgeo-framework、autogeo-framework、geo-optimization-methods。
 
 ---
 
@@ -42,6 +42,13 @@
 - [[autogeo-framework]] — CMU AutoGEO 框架：用 LLM 自動提煉 GE 偏好規則，驅動文件改寫（API + RL 雙模式）
 - [[geo-preference-rules]] — 系統性提煉的 GE 偏好規則集（跨引擎共同規則 + 領域/引擎獨特規則）
 - [[geo-cooperative-vs-adversarial]] — 合作性 GEO vs 對抗性攻擊（GEU 指標、Hijack/Poisoning Attack 分析）
+
+#### 自我進化框架（AgenticGEO, 2026）
+
+- [[agenticgeo-beihang]] — Beihang AgenticGEO：MAP-Elites 進化策略 Archive + Co-Evolving Critic，跨域平均 +46.4%，超越 AutoGEO
+- [[map-elites-geo]] — MAP-Elites 質量-多樣性進化 Archive：Value-Novelty Gate、PND Score、12 維行為描述符
+- [[co-evolving-critic]] — Co-Evolving Critic（Qwen2.5-1.5B）：代理評估器設計、Hybrid Objective、泛化界 O(1/√T)
+- [[geo-strategy-genotype]] — 5 維基因型策略表示（I/C/R/F/T）、兩種渲染函數、突變與交叉操作
 
 #### 診斷式優化（AgentGEO, 2026）
 

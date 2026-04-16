@@ -4,6 +4,32 @@
 
 ---
 
+## [2026-04-16] ingest | AgenticGEO — 自我進化代理系統（Beihang University）
+
+**來源**：AgenticGEO - A Self-Evolving Agentic System for Generative Engine Optimization.pdf
+**作者**：Jiaqi Yuan、Jialu Wang、Zihan Wang、Qingyun Sun、Ruijie Wang、Jianxin Li（北京航空航天大學）
+**日期**：2026
+
+**新增頁面**（4 頁）：
+- `agenticgeo-beihang.md`：主框架頁——問題定位（GEO 是 instance-dependent，近 50% 樣本靜態策略無效）、三階段架構（離線 Critic 對齊→線上共同進化→推理多輪改寫）、模型組成（Evolver/Critic/Rewriter）、完整實驗結果（in-domain +26%，cross-domain 最高 +25.5%，平均 46.4% vs 14 基準）、與 AutoGEO / AgentGEO 的定位比較
+- `map-elites-geo.md`：MAP-Elites Archive 機制——質量-多樣性進化背景、12 維行為描述符（2 Core + 6 Switches + 4 Buckets）、Value-Novelty Gate（n-gram Jaccard < 0.9）、PND Score（λ=0.3）、神經突變與符號擾動兩種進化操作
+- `co-evolving-critic.md`：Co-Evolving Critic 設計——Qwen2.5-1.5B 作為代理評估器、雙重職責（篩選器+規劃器）、Hybrid Objective（Regression + Pairwise Ranking）、分階段訓練、Btrue/Bpred 雙 replay buffer、泛化界 O(1/√T)、各域 NDCG 數據
+- `geo-strategy-genotype.md`：5 維基因型策略表示——I/C/R/F/T 各維度語意與範例、R_crit 緊湊摘要渲染 vs R_eng 完整 prompt 渲染、突變/交叉操作機制、與 12 維 MAP-Elites 描述符的對應關係、9 種種子策略的基因型特徵
+
+**更新頁面**（3 頁）：
+- `agentgeo-framework.md`：新增「AgenticGEO 補充說明」章節，澄清 AgentGEO（Virginia Tech）vs AgenticGEO（Beihang）的根本差異（問題定位、評估指標、方法論）；更新相關頁面連結
+- `autogeo-framework.md`：新增「被 AgenticGEO 超越」章節，含三域對比數據（GEO-Bench +7.5%、MS-MARCO +11.2%、E-Commerce +25.5%）及 AutoGEO 根本限制分析；更新相關頁面連結
+- `geo-optimization-methods.md`：新增「AgenticGEO 進化策略 Archive」章節，說明 9 種種子策略在 AgenticGEO 中作為初始化來源的角色；更新相關頁面連結（新增 4 個 AgenticGEO 相關頁面）
+
+**主要發現**：
+- GEO 是 instance-dependent：策略敏感度分析顯示近 50% 的文件對所有靜態策略效果都差
+- MAP-Elites Archive + Co-Evolving Critic 的共同進化機制，比固定規則方法（AutoGEO）在跨域設定下大幅領先（E-Commerce +25.5%）
+- 消融研究確認：進化 Archive 是最關鍵元件（移除後損失最大）；Critic 線上更新其次
+- 語義一致性高：BERTScore-F1 最高，不依賴激進改寫
+- 泛化界 O(√T)（整體）+ O(1/√T)（Critic）確保共同進化的收斂性
+
+---
+
 ## [2026-04-16] ingest | Caption Injection — 第一個多模態 G-SEO 方法
 
 **來源**：Caption Injection for Optimization in Generative Search Engine.pdf

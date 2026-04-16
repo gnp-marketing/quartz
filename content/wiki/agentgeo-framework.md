@@ -212,6 +212,24 @@ AgentGEO 在所有內容長度上都能提升引用率，效果在「Very Long�
 
 ---
 
+---
+
+## 🆕 2026 年補充：AgenticGEO——名字相似，路線截然不同
+
+注意：2026 年 Beihang University（北京航空航天大學）也發表了一篇名為「AgenticGEO」（Yuan et al.）的論文，容易與本頁的 Virginia Tech「AgentGEO」混淆。兩篇論文的定位完全不同：
+
+| 比較項目 | **AgentGEO（Virginia Tech）** | **AgenticGEO（Beihang）** |
+|---|---|---|
+| 核心問題 | 引用失敗診斷 → 精準修復 | 靜態策略無法泛化 → 進化策略庫 |
+| 方法論 | 診斷失敗原因 → 選擇 9 種針對性工具 | MAP-Elites 進化 Archive + Co-Evolving Critic |
+| 策略池 | 固定 9 種工具 | 進化、持續擴充 |
+| 評估指標 | Citation Rate（CR，二元） | Impression Score（Word / Pos / Overall） |
+| 強調 | 精準修復（只改 5% 內容）、可解釋性 | 跨域泛化、內容感知策略選擇 |
+
+詳見 [[agenticgeo-beihang]]。
+
+---
+
 ## 相關頁面
 
 - [[citation-failure-taxonomy]] — AgentGEO 診斷所基於的四類十二種失敗分類法
@@ -221,3 +239,4 @@ AgentGEO 在所有內容長度上都能提升引用率，效果在「Very Long�
 - [[autogeo-framework]] — CMU 提出的通用規則自動提煉框架（對比參照）
 - [[big-brand-bias]] — Competitive Redundancy 的品牌偏見背景
 - [[citation-performance-metrics]] — 引用率（CR）指標的定義
+- [[agenticgeo-beihang]] — Beihang AgenticGEO：自我進化代理框架（不同機構、不同方法）

@@ -379,6 +379,39 @@ IF-GEO 採用「先發散、後收斂」流程：
 
 ---
 
+## 🆕 2026 年更新：AgenticGEO——進化策略 Archive 的自我優化框架
+
+AgenticGEO（Yuan et al., Beihang University, 2026）採取根本不同的路線：**不只是選策略，而是進化策略本身**。
+
+**核心觀察**：9 種種子策略（及 AutoGEO 規則）的效果高度依賴文件（instance-dependent）。對近半數文件，任何靜態策略效果都差。
+
+**AgenticGEO 架構**：
+
+```
+離線校準（9 種種子策略建立 Critic 初始能力）
+    ↓ 線上共同進化
+MAP-Elites Archive ←→ Co-Evolving Critic
+（進化策略庫）      （代理評估器，減少真實引擎查詢）
+    ↓ 推理時
+Critic 選擇最適策略 → 多輪改寫（最多 3 步）
+```
+
+**實驗結果（vs AutoGEO，Qwen2.5-32B 引擎）**：
+
+| 數據集 | AgenticGEO | AutoGEO | 提升 |
+|---|---|---|---|
+| GEO-Bench（in-domain） | 25.48 | 23.71 | +7.5% |
+| MS-MARCO（cross-domain） | 34.10 | 30.67 | +11.2% |
+| E-Commerce（cross-domain） | 26.58 | 21.18 | **+25.5%** |
+
+平均相比 14 個基準線提升 **46.4%**，且高度保留語義一致性（不依賴激進改寫）。
+
+**9 種種子策略在 AgenticGEO 中的地位**：這 9 種策略是 AgenticGEO Archive 的**初始種子**。離線階段以這 9 種策略的真實引擎反饋 warm-start Co-Evolving Critic；線上進化後，Archive 中的策略數量和多樣性遠超這 9 種。
+
+完整框架見 [[agenticgeo-beihang]]；Archive 機制見 [[map-elites-geo]]；Critic 設計見 [[co-evolving-critic]]。
+
+---
+
 ## 🆕 2026 年更新：Caption Injection——第一個多模態 G-SEO 方法
 
 前述所有方法（包括 AutoGEO、AgentGEO、IF-GEO）的共同盲點：**只優化文字**。但當 GSE 採用多模態 RAG（MRAG）架構，圖片語意成為 LLM 生成回應的輸入之一時，純文字策略的優化潛力會受到稀釋。
@@ -422,7 +455,11 @@ Caption Injection（Xiaoluchen et al., 2026）提出三階段流程，將圖片�
 - [[autogeo-framework]] — AutoGEO 自動化 GEO 框架（2025）
 - [[geo-preference-rules]] — 系統性提煉的 GE 偏好規則集
 - [[geo-cooperative-vs-adversarial]] — 合作性 vs 對抗性 GEO 策略比較
-- [[agentgeo-framework]] — 診斷式修復框架（2026）
+- [[agentgeo-framework]] — 診斷式修復框架（2026，Virginia Tech）
+- [[agenticgeo-beihang]] — AgenticGEO 自我進化代理框架（2026，Beihang）
+- [[map-elites-geo]] — MAP-Elites 進化策略 Archive
+- [[co-evolving-critic]] — Co-Evolving Critic 代理評估器
+- [[geo-strategy-genotype]] — 5 維基因型策略表示
 - [[citation-failure-taxonomy]] — 引用失敗四類十二種模式（診斷基礎）
 - [[geo-citation-vs-contribution]] — 為什麼引用率比貢獻度更根本
 - [[ifgeo-framework]] — IF-GEO 多查詢衝突融合框架（2026）

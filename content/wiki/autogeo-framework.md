@@ -216,6 +216,31 @@ IF-GEO（Zhou et al., USTC, 2026-01-20）以 AutoGEO 作為最強基線，並在
 
 ---
 
+---
+
+## 🆕 2026 年更新：被 AgenticGEO 超越
+
+AgenticGEO（Yuan et al., Beihang University, 2026）以 AutoGEO 作為最強基準，在 in-domain 和 cross-domain 設定下全面超越：
+
+| 數據集 | AutoGEO Overall | AgenticGEO Overall | 提升 |
+|---|---|---|---|
+| GEO-Bench（in-domain） | 23.71 | **25.48** | +7.5% |
+| MS-MARCO（cross-domain） | 30.67 | **34.10** | +11.2% |
+| E-Commerce（cross-domain） | 21.18 | **26.58** | +25.5% |
+
+**AutoGEO 在 AgenticGEO 中被診斷的根本限制**：
+
+AutoGEO 蒸餾出**固定的偏好規則**，再對所有文件套用相同規則集。這在單一域的 in-domain 設定表現尚可，但面臨：
+1. **Instance heterogeneity**：規則適合某類文件，但對其他文件無效（近 50% 樣本用任何靜態策略都效果差）
+2. **策略不進化**：規則一旦蒸餾完成，無法根據新文件或引擎行為變化更新
+3. **跨域泛化差**：E-Commerce 比 GEO-Bench 更難：AutoGEO 的偏好規則來自訓練域，跨域時策略不再適用
+
+AgenticGEO 的解法是維護一個**可進化的策略 Archive**（MAP-Elites），搭配 Co-Evolving Critic 降低引擎查詢成本，同時保持高語義一致性（不依賴激進改寫）。
+
+詳見 [[agenticgeo-beihang]]、[[map-elites-geo]]。
+
+---
+
 ## 相關頁面
 
 - [[geo-preference-rules]] — 框架提煉出的完整規則集與跨引擎分析
@@ -227,3 +252,4 @@ IF-GEO（Zhou et al., USTC, 2026-01-20）以 AutoGEO 作為最強基線，並在
 - [[geo-multi-query-optimization]] — 多查詢競爭衝突問題（AutoGEO 的盲點）
 - [[sageo-arena-benchmark]] — SAGEO Arena：AutoGEO 在現實 pipeline 中表現最差的評估
 - [[stage-aware-sageo]] — 階段感知優化（現實環境中比 AutoGEO 更佳的策略）
+- [[agenticgeo-beihang]] — Beihang AgenticGEO：進化策略 Archive（全面超越 AutoGEO）
