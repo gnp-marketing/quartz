@@ -5,8 +5,9 @@
 **Sources**:
 - Structural Feature Engineering for Generative Engine Optimization - How Content Structure Shapes Citation Behavior.pdf
 - Diagnosing and Repairing Citation Failures in Generative Engine Optimization.pdf（Tian et al., 2026）
+- Don't Measure Once - Measuring Visibility in AI Search (GEO).pdf（Schulte, Bleeker, Kaufmann；聖加侖大學；arXiv:2604.07585v1；2026-04-10）
 
-**Last updated**: 2026-04-15
+**Last updated**: 2026-04-16
 
 ---
 
@@ -204,6 +205,47 @@ IF-GEO（Zhou et al., USTC, 2026）提出三個補充指標，專門量化**跨�
 
 ---
 
+---
+
+## 🆕 2026 年更新：測量可靠性——Jaccard 相似度與 RBO
+
+前述所有指標（CR、VS、PAWC）都有一個隱含前提：**測量一次就夠了**。Schulte et al. (2026) 實證證明這是錯誤的假設。
+
+### 問題：單次測量的誤差有多大？
+
+AI 搜尋引擎的輸出是機率性的。單次執行的品牌偵測率，其標準誤差（SE）高達 **0.370**——相當於一個真實偵測率為 50% 的品牌，單次執行可能顯示出 0% 到 100% 之間的任何數字。
+
+### 新的相似度指標
+
+**Jaccard 相似度**：衡量兩次執行結果的集合重疊率
+$$J(A, B) = \frac{|A \cap B|}{|A \cup B|}$$
+- 實測值：來源引用 0.32–0.43，品牌提及 0.45–0.59
+- 直觀：J = 0.35 代表 35% 重疊，65% 不同
+
+**Rank Biased Overlap (RBO, p=0.9)**：衡量兩次執行的排序一致性（前段加權更重）
+- 系統性低於 Jaccard（因額外懲罰排序不一致）
+- 實測值：來源 RBO 0.21–0.26，品牌 RBO 0.19–0.30
+
+### 最低執行次數建議
+
+| 監測目標 | 最低執行次數 | SE | 95% CI |
+|---|---|---|---|
+| 品牌能見度 | **7 次** | 0.081 | ±0.158 |
+| 來源覆蓋 | **8 次** | 0.096 | ±0.187 |
+
+### 時間窗口建議
+
+| 統計精確度目標 | 最低觀察窗口 |
+|---|---|
+| 方向性監測（SE < 0.10）| 10 天 |
+| 品牌比較（SE < 0.05）| **21–28 天（推薦）** |
+
+**結論**：現有 GEO 工具若以單次快照作為 CR 或 VS 的估計，其數字的可信度極低。正確做法是對每個 prompt 每天執行 7–8 次，並使用 2–4 週滾動平均。
+
+詳見 [[geo-visibility-stability]]、[[geo-measurement-methodology]]。
+
+---
+
 ## 相關概念
 
 - [[geo-sfe-framework]]
@@ -214,3 +256,5 @@ IF-GEO（Zhou et al., USTC, 2026）提出三個補充指標，專門量化**跨�
 - [[mimiq-benchmark]] — 支援訓練/測試分割的文件中心式評測基準
 - [[geo-risk-aware-stability-metrics]] — WCP / DR / WTR 三個風險感知穩定性指標
 - [[ifgeo-framework]] — IF-GEO 多查詢框架（指標來源）
+- [[geo-visibility-stability]] — 能見度穩定性的完整實證數據（聖加侖大學 2026）
+- [[geo-measurement-methodology]] — Jaccard / RBO 定義與最低執行次數推導

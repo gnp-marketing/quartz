@@ -4,6 +4,32 @@
 
 ---
 
+## [2026-04-16] ingest | Don't Measure Once — AI 搜尋能見度測量（聖加侖大學）
+
+**來源**：Don't Measure Once - Measuring Visibility in AI Search (GEO).pdf
+**作者**：Julius Schulte、Malte Bleeker、Philipp Kaufmann（聖加侖大學）
+**日期**：arXiv:2604.07585v1，2026-04-10
+
+**新增頁面**（4 頁）：
+- `geo-visibility-stability.md`：核心論點——GEO 能見度是機率分佈、不是排名；跨日來源 Jaccard 0.34–0.42；品牌 Jaccard 0.45–0.59；概念框架（快照謬誤、納入/排除動態）；完整實務建議
+- `geo-measurement-methodology.md`：Jaccard 相似度定義與邊界案例政策；RBO（p=0.9）定義；Bootstrap 收斂分析推導最低執行次數（品牌 n=7，來源 n=8）；時間窗口分析（10/21/28 天閾值）；Prompt 設計原則
+- `geo-stochasticity.md`：同日重複執行 vs 跨日的對比實驗；各引擎隨機性差異（Gemini 最穩定 0.505，ChatGPT 最不穩定 0.233）；token 生成 / RAG 競爭選擇 / 回應空間壓縮的機制解釋
+- `geo-citation-concentration.md`：Gini 係數定義與計算範例；按引擎分解（Google AI Mode 0.782 最集中，Perplexity 0.671 最分散）；按活動分解（電信 0.750，運動用品 0.680）；GEO 策略意涵
+
+**更新頁面**（2 頁）：
+- `geo-visibility-metrics.md`：新增「穩定性——可見度的第二個維度」章節，含跨日數據概覽、對現有指標的影響表、實務建議；更新 Sources 和相關頁面連結
+- `citation-performance-metrics.md`：新增「測量可靠性——Jaccard 相似度與 RBO」章節，含最低執行次數表、時間窗口表、關鍵結論；更新 Sources 和相關頁面連結
+
+**主要發現**：
+- 連續兩天的引用來源 Jaccard 相似度只有 0.34–0.42（每天 60% 來源更換）
+- 同日內重複執行的 Jaccard 幾乎與跨日相同——不穩定性主要來自模型本身的隨機生成，而非外部因素
+- 品牌提及穩定性（0.45–0.59）高於來源引用（0.34–0.42），是更可靠的 GEO KPI
+- 引用分佈高度集中：平均 Gini = 0.715，Google AI Mode 最高（0.782），Perplexity 最低（0.671）
+- 統計推導：品牌監測需每日 7 次執行（SE < 0.10），來源監測需 8 次；時間窗口建議 2–4 週
+- 單次執行的 SE = 0.370——「一次快照」基本沒有統計資訊量
+
+---
+
 ## [2026-04-16] ingest | AgenticGEO — 自我進化代理系統（Beihang University）
 
 **來源**：AgenticGEO - A Self-Evolving Agentic System for Generative Engine Optimization.pdf

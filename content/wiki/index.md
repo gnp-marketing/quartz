@@ -4,7 +4,7 @@
 
 **Last updated**: 2026-04-16
 
-> 本次更新（2026-04-16）新增「自我進化框架（AgenticGEO, 2026）」子分類，包含 4 個新頁面（agenticgeo-beihang、map-elites-geo、co-evolving-critic、geo-strategy-genotype）；並更新 agentgeo-framework、autogeo-framework、geo-optimization-methods。
+> 本次更新（2026-04-16）新增「GEO 能見度測量（聖加侖大學, 2026）」子分類，包含 4 個新頁面（geo-visibility-stability、geo-measurement-methodology、geo-stochasticity、geo-citation-concentration）；並更新 geo-visibility-metrics、citation-performance-metrics。
 
 ---
 
@@ -72,6 +72,13 @@
 
 - [[caption-injection-gseo]] — 第一個多模態 G-SEO 方法：三階段流程（O-A-S→精煉→注入）、實驗結果、實踐指南
 - [[mrag-gseo]] — 多模態 RAG 架構對 G-SEO 的挑戰、MRAMG benchmark（4,800 查詢，6 領域）
+
+#### GEO 能見度測量（聖加侖大學, 2026）
+
+- [[geo-visibility-stability]] — AI 搜尋能見度是機率分佈：聖加侖大學 45 天實驗，跨日來源重疊率僅 34–42%
+- [[geo-measurement-methodology]] — 重複測量框架：Jaccard 相似度、RBO、最低 7–8 次執行、2–4 週觀察窗口
+- [[geo-stochasticity]] — 同日重複執行實驗：不穩定性主要來自模型本身，而非外部演算法更新
+- [[geo-citation-concentration]] — Gini 係數（平均 0.715）：少數域名壟斷 AI 引用，Google AI Mode 最集中
 
 #### 多查詢優化（IF-GEO, 2026）
 

@@ -5,6 +5,7 @@
 **Sources**:
 - GEO - Generative Engine Optimization.pdf（Aggarwal et al., KDD '24）
 - Caption Injection for Optimization in Generative Search Engine.pdf（Xiaoluchen et al.；arXiv:2511.04080v2，2026-03-18）
+- Don't Measure Once - Measuring Visibility in AI Search (GEO).pdf（Schulte, Bleeker, Kaufmann；聖加侖大學；arXiv:2604.07585v1；2026-04-10）
 
 **Last updated**: 2026-04-16
 
@@ -226,6 +227,40 @@ Caption Injection 論文（Xiaoluchen et al., 2026）沿用相同的七維度框
 
 ---
 
+---
+
+## 🆕 2026 年更新：穩定性——可見度的第二個維度
+
+上述三層指標（PAWC、字數佔比、主觀印象）都有一個共同的隱含假設：**測量一次就夠了**。但 Schulte et al. (2026) 的實證研究證明這個假設是錯誤的。
+
+### 穩定性問題
+
+AI 搜尋的回應是機率性的——即使是完全相同的 prompt，每次執行都可能得到不同的引用集合與品牌提及。在 45–46 天的實驗中：
+
+- **來源引用**：連續兩天的 Jaccard 相似度只有 **0.34–0.42**（每天約 60% 的來源更換）
+- **品牌提及**：Jaccard **0.45–0.59**（略穩定，但 RBO 仍只有 0.19–0.30）
+- **同日重複執行**的相似度與跨日幾乎相同——不穩定性來自模型本身
+
+（source: Don't Measure Once - Measuring Visibility in AI Search (GEO).pdf）
+
+### 對現有指標的影響
+
+| 指標 | 傳統假設 | 修正後理解 |
+|---|---|---|
+| PAWC | 單次查詢代表真實表現 | 需多次執行平均，單次誤差 SE = 0.370 |
+| 字數佔比 | 你今天的佔比就是你的水準 | 每次結果不同，需要分佈視角 |
+| 主觀印象 | G-Eval 評一次即可 | 若基於的回應本身不穩定，評估結果也不穩定 |
+
+### 穩定性的實務建議
+
+- 每個 prompt **至少執行 7 次**再計算品牌能見度（SE < 0.10）
+- 採用 **2–4 週滾動窗口**追蹤長期趨勢
+- 把「品牌被提及的機率」作為主要 GEO KPI，而非「排名位置」
+
+詳見 [[geo-visibility-stability]]、[[geo-measurement-methodology]]。
+
+---
+
 ## 相關頁面
 
 - [[geo-optimization-methods]] — 提升可見度的 9 種具體方法（含 Caption Injection）
@@ -234,3 +269,5 @@ Caption Injection 論文（Xiaoluchen et al., 2026）沿用相同的七維度框
 - [[generative-engine-architecture]] — 了解 GE 如何處理來源（影響可見度的根本機制）
 - [[caption-injection-gseo]] — G-EVAL 2.0 在多模態場景的完整實驗數據
 - [[mrag-gseo]] — 多模態 G-SEO 評估框架與 MRAMG benchmark
+- [[geo-visibility-stability]] — 能見度穩定性研究：聖加侖大學 2026 年實證數據
+- [[geo-measurement-methodology]] — 重複測量框架：Jaccard、RBO、最低執行次數
