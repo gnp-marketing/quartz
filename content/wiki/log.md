@@ -1,6 +1,113 @@
 # Wiki 操作日誌
 
-**Last updated**: 2026-04-16
+本日誌為追加專用（append-only），記錄所有 wiki 操作，最新在上。
+
+**Last updated**: 2026-07-06
+
+---
+
+## [2026-07-06] restructure | 合併 Media-Review vault，改為三領域結構
+
+- 將 D:\Antigravity_KB_Media-Review 的 wiki（16 頁）與 raw（5 份 docx）併入本 vault
+- wiki 改為三領域資料夾：`aeo-geo/`（42 頁）、`hardware/vga/`（12 頁）、`hardware/mouse/`（4 頁）、`research/`（預留）
+- raw 同步改為對應結構：`aeo-geo/`、`hardware/vga/`、`hardware/mouse/`、`research/`
+- 合併兩邊 index.md 與 log.md；改寫 CLAUDE.md 為三領域 + ingest 分類規則
+- auto-sync.ps1 改為只同步 wiki/ 到 Quartz，raw/ 不再發布；並自 GitHub repo 移除先前誤上傳的 raw 原始檔
+
+---
+
+## [2026-04-26] ingest | Club386 (UK) - MSI Versa 300 Wireless 8K review
+
+**來源檔案**：`Club386 (UK) - MSI Versa 300 Wireless 8K review_ a high-value, high-polling mouse.docx`
+
+**新建頁面**：
+- `msi-versa-300-wireless-8k-club386.md` — Club386 評測摘要（Samuel Willetts，Club386 Approved）
+- `msi-versa-300-wireless-8k.md` — Versa 300 Wireless 8K 主條目
+- `pixart-paw3395.md` — PixArt PAW3395 感測器概念頁
+- `mouse-polling-rate.md` — 滑鼠輪詢率概念頁（8,000Hz 原理、CPU 消耗、電池代價）
+
+**更新頁面**：
+- `index.md` — 加入上述 4 個新頁面條目，並新增「滑鼠」硬體條目分類
+
+**重點摘要**：Wiki 首篇滑鼠評測來源。核心命題：MSI Versa 300 Wireless 8K 以 £59.99 提供 8,000Hz 輪詢率，在主流價位罕見，整體定位明確。主要缺點集中於側面不可替換鑽石紋握把（舒適度與長期耐久疑慮）及軟體 RGB 無法透過 UI 控制（與 Elite 版本形成人工差異）。感測器 PAW3395 在此價位屬超規配置。電池壽命 196 小時（1,000Hz）/ 80 小時（8,000Hz+RGB）。
+
+
+---
+
+## [2026-04-24] ingest | igorslab - MSI RTX 5090 Lightning Z 完整評測
+
+**來源檔案**：`igorslab - MSI GeForce RTX 5090 Lightning Z review – Lightning-fast and thirsty unicorn in battle against NVIDIA's clock speed barriers.docx`
+
+**新建頁面**：
+- `msi-rtx5090-lightning-z-igorslab-review.md` — 完整評測摘要（測試平台、PCB/VRM、LIBS 材料分析、基準測試、功耗、散熱、噪音、OC 效率）
+- `gpu-vrm-architecture.md` — GPU VRM 多相架構概念頁（MP29816-A、MPS2522 並聯拓撲、uP1666 過電流保護）
+- `thermal-interface-materials.md` — 導熱介面材料概念頁（PTM pad、各部件 TIM 選用、水冷頭純銅無鍍鎳、鋁製水冷排說明、背板 Al-Si 合金確認）
+
+**更新頁面**：
+- `msi-rtx5090-lightning-z.md` — 加入 PCB/VRM 架構摘要、igorslab 散熱對比表（AIO vs 風冷差 14–17K）、幫浦 3kHz 噪音問題、OC 效率遞減量化數據、igorslab 完整評測評分、更新 Sources 與 Related pages
+- `gpu-aio-cooler.md` — 加入水冷頭純銅 LIBS 分析、鋁製水冷排說明、幫浦 3kHz 噪音問題（觸發時機與主觀感受說明）
+- `index.md` — 加入 3 個新頁面條目
+
+**重點摘要**：igorslab 提供本 wiki 中最深度的硬體分析來源。三大獨家發現：(1) VRM 採用 MPS2522 並聯拓撲而非傳統 phase doubler，電流感測主動補償；(2) LIBS 分析揭示背板「碳纖」為貼膜、水冷排為鋁合金（非銅）、GPU die TIM 為無矽相變 PTM pad；(3) OC 效率量化：時脈 +24% 僅換來 FPS +11%，DLSS 效益遠超所有 OC 方案。定性結論：Lightning Z 是「工程奇蹟級獨角獸」，售價超出實際附加價值，定性為收藏品。
+
+
+---
+
+## [2026-04-24] ingest | igorslab - RTX 5090 Lightning Z 焊點門分析
+
+**來源檔案**：`igorslab - Eye for solder eyes, tooth for chattering teeth_ What's really going on with the "solder joint gate" of the MSI RTX 5090 Lightning Z_.docx`
+
+**新建頁面**：
+- `msi-rtx5090-lightning-z-igorslab-solder.md` — igorslab 焊點門深度分析摘要
+- `tht-solder-quality.md` — THT 焊接品質與 IPC-A-610 標準概念頁
+
+**更新頁面**：
+- `msi-rtx5090-lightning-z.md` — 加入「製造品質爭議：焊點門」區段、更新 Sources 與評分彙整、加入新 Related pages
+- `12v-2x6-connector.md` — 加入「焊點品質觀察」區段，說明 GND 腳與供電腳的差異風險
+- `index.md` — 加入 igorslab 焊點摘要頁與 tht-solder-quality 概念頁條目
+
+**重點摘要**：igorslab 作者持有 Lightning Z 樣品，親自電氣量測後確認功能正常（接觸電阻、電流分配、溫度均無異常）。製程分析揭示 Lightning Z 屬小批量生產，可能使用選擇性焊接，解釋了外觀不均的成因。核心概念：外觀差異不等於功能缺陷；高電流接頭的供電腳比接地腳更值得關注；無 X 光無法確認 barrel fill。
+
+
+---
+
+## [2026-04-24] ingest | TPU - MSI GeForce RTX 5090 Lightning Z Review - Up to 1000 W
+
+**來源檔案**：`TPU _ MSI GeForce RTX 5090 Lightning Z Review - Up to 1000 W.docx`
+
+**新建頁面**：
+- `msi-rtx5090-lightning-z-tpu.md` — TechPowerUp 評測摘要
+
+**更新頁面**：
+- `msi-rtx5090-lightning-z.md` — 加入售價（$5,090）、完整規格表、效能對比、散熱數據、超頻資料、競品擴充
+- `gpu-tgp-power-modes.md` — 加入 2500W BIOS、TPU 確認 1% 效能差異、PSU 建議
+- `gpu-aio-cooler.md` — 加入幫浦不停轉機制、噪音標準化測試數據、各版本散熱比較表
+- `12v-2x6-connector.md` — 加入雙接頭負載分攤數據（各 400W/500W）、單接頭禁用說明
+- `rtx-5090.md` — 補齊 GB202 完整規格、Blackwell 架構特點、擴充 AIB 版本列表（AORUS Infinity、LYNK+）
+- `index.md` — 加入 TPU 評測摘要頁條目
+
+**重點摘要**：TPU 提供最深度的硬體分析。關鍵新增數據：幫浦永不停轉的設計原因；噪音標準化測試確認 Lightning Z 散熱能力為所有 RTX 5090 中第一；原廠 +323 MHz 超頻換來 +10% 效能；雙評測一致確認 1000W 模式效能增益幾乎為零。
+
+
+---
+
+## [2026-04-24] ingest | benchlife - MSI GeForce RTX 5090 Lightning Z 實測
+
+**來源檔案**：`benchlife - 360mm 一體式水冷、2x 12V-2×6 接頭與 800W 功耗，MSI GeForce RTX 5090 Lightning Z 實測.docx`
+
+**新建頁面**：
+- `msi-rtx5090-lightning-z-benchlife.md` — benchlife 評測摘要
+- `msi-rtx5090-lightning-z.md` — Lightning Z 主條目
+- `rtx-5090.md` — RTX 5090 概念頁
+- `gpu-aio-cooler.md` — GPU AIO 水冷概念頁
+- `12v-2x6-connector.md` — 12V-2×6 接頭概念頁
+- `gpu-tgp-power-modes.md` — TGP 與功耗模式概念頁
+
+**更新頁面**：
+- `index.md` — 建立索引，加入上述所有頁面
+
+**重點摘要**：首篇 ingest，建立 wiki 基礎結構。benchlife 繁中評測帶出 Lightning Z 的核心特色：360mm AIO 散熱、2x 12V-2×6 供電、800W 預設 TGP、8 吋顯示面板，以及 1000W EXTREME 模式在效能上與 800W OC 模式幾乎無差異的關鍵發現。
+
 
 ---
 
@@ -28,6 +135,7 @@
 - 統計推導：品牌監測需每日 7 次執行（SE < 0.10），來源監測需 8 次；時間窗口建議 2–4 週
 - 單次執行的 SE = 0.370——「一次快照」基本沒有統計資訊量
 
+
 ---
 
 ## [2026-04-16] ingest | AgenticGEO — 自我進化代理系統（Beihang University）
@@ -54,6 +162,7 @@
 - 語義一致性高：BERTScore-F1 最高，不依賴激進改寫
 - 泛化界 O(√T)（整體）+ O(1/√T)（Critic）確保共同進化的收斂性
 
+
 ---
 
 ## [2026-04-16] ingest | Caption Injection — 第一個多模態 G-SEO 方法
@@ -79,6 +188,7 @@
 - 所有方法在長文（Manual，avg 6,365 字元）中效果均差，信息密度稀釋是瓶頸
 - 傳統 SEO 關鍵詞優化在多模態 GSE 中仍有害（-0.66%）
 
+
 ---
 
 ## [2026-04-16] ingest | MGEO — 多模態 GEO：VLM 排名攻擊
@@ -93,6 +203,7 @@
 
 **更新頁面**：
 - `geo-cooperative-vs-adversarial.md`：新增 MGEO 多模態對抗性攻擊段落（與 Hijack/Poisoning 的對比）；更新 Sources 和 Last updated；新增相關頁面連結
+
 
 ---
 
@@ -121,6 +232,7 @@
 - Stage-Aware SAGEO（論文提出）是最佳表現：H@20 +28%，ΔRank +4.86，Citation Rate +1.01
 - 短關鍵字密集文件利於 BM25 檢索，但 LLM reranker 和生成器更偏好實質回應查詢的內容
 
+
 ---
 
 ## [2026-04-16] ingest | IF-GEO — 多查詢衝突感知指令融合優化
@@ -148,6 +260,7 @@
 - N=5 擴展查詢是最優甜蜜點，WTR 在 N=5 達到峰值（80%）後邊際收益遞減
 - 無需引擎特定調整即可泛化到 Gemini-2.0-Flash（IF-GEO 仍最強：14.17 Mean，84.07% WTR）
 - 組件分工明確：Conflict Resolution = 安全護欄，Instruction Fusion = 穩定器，Blueprint = 可執行性
+
 
 ---
 
@@ -178,6 +291,7 @@
 - Competitive Redundancy（面對 Wikipedia/Coursera 等）是「不可修復失敗」——任何內容優化無效
 - Claude 在答案品質指標上優於 GPT，但引用率對優化的反應比 GPT 更慢
 
+
 ---
 
 ## [2026-04-15] ingest | AutoGEO — 生成式引擎偏好規則自動提煉
@@ -201,6 +315,7 @@
 - 對抗性攻擊（Hijack/Poisoning）雖提升 GEO，但系統性損害 GEU（KPR、Clarity、Insight 全面下降）
 - 跨引擎規則重疊率 79–84%；跨領域（開放域 vs 電商）重疊率僅 34–40%
 - 電商領域需要 Step-by-Step、Production Details 等獨特規則；研究型需要 In-depth、Balanced View
+
 
 ---
 
@@ -229,6 +344,7 @@
 - 語言切換對引用結果的影響遠大於查詢改寫
 - 各引擎 domain 生態 50–68% 為獨佔，無法用單一策略覆蓋所有引擎
 
+
 ---
 
 ## [2026-04-15] ingest | 結構特徵工程論文
@@ -252,6 +368,7 @@
 - 三層結構貢獻度：宏觀 45% + 中觀 40% + 微觀 15%
 - 感知品質提升 18.5%，其中影響力和點擊概率最高（> 31%）
 - 優化在所有 6 個生成式引擎和 6 個內容領域間高度一致
+
 
 ---
 
@@ -278,6 +395,7 @@
 - PAWC vs 主觀印象的分歧：權威風格 PAWC 僅 +10% 但主觀印象 +19%（流量目標 vs 品牌曝光目標應用不同指標）
 - 所有指標正規化：各來源佔比總和 = 1（零和競爭），與 GEO-SFE 的非零和 CR 指標形成對比
 - 流暢性優化 + 統計添加是最佳組合方案（>35% 提升）
+
 
 ---
 

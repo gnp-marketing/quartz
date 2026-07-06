@@ -16,7 +16,7 @@ const config: QuartzConfig = {
     },
     locale: "en-US",
     baseUrl: "gnp-marketing.github.io/quartz",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    ignorePatterns: ["private", "templates", ".obsidian", "raw", "**/CLAUDE.md"],
     defaultDateType: "modified",
     defaultMode: "light",   // ← 加这一行
     theme: {

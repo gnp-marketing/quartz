@@ -1,14 +1,14 @@
 # Wiki 目錄
 
-**Summary**: LLM Wiki 的中央索引，涵蓋硬體、搜尋優化和生成式引擎優化主題。
+**Summary**: LLM Wiki 的中央索引，涵蓋三大知識領域：AEO/GEO、硬體評測、研究文庫。
 
-**Last updated**: 2026-04-16
+**Last updated**: 2026-07-06
 
-> 本次更新（2026-04-16）新增「GEO 能見度測量（聖加侖大學, 2026）」子分類，包含 4 個新頁面（geo-visibility-stability、geo-measurement-methodology、geo-stochasticity、geo-citation-concentration）；並更新 geo-visibility-metrics、citation-performance-metrics。
+> 本次更新（2026-07-06）：合併 Media-Review vault，wiki 改為三領域資料夾結構（`aeo-geo/`、`hardware/`、`research/`），硬體區新增 VGA 與 Mouse 兩個產品分類共 16 頁。
 
 ---
 
-## 搜尋與 AI 優化
+## AEO / GEO（`wiki/aeo-geo/`）
 
 ### 生成式引擎優化（GEO）
 
@@ -95,6 +95,50 @@
 
 ---
 
-## 硬體
+## 硬體評測（`wiki/hardware/`）
+
+### VGA（`hardware/vga/`）
+
+#### 產品主條目
+
+- [[lightning-z]] — MSI GeForce RTX 5090 Lightning Z 主條目，跨評測整合
+
+#### 評測摘要頁
+
+- [[lightning-z-benchlife]] — benchlife 繁中評測：360mm AIO、800W TGP、Silver 推薦
+- [[lightning-z-tpu]] — TechPowerUp 英文深度評測：VRM 分析、噪音標準化散熱測試、超頻、比 FE 快 10%
+- [[lightning-z-igorslab-review]] — igorslab 完整評測：拆解、LIBS 材料分析、基準測試、功耗峰值、OC 效率遞減分析
+- [[lightning-z-igorslab-solder]] — igorslab「焊點門」分析：電氣實測正常，外觀不符旗艦定位
+
+#### 概念頁
+
+- [[rtx-5090]] — NVIDIA GeForce RTX 5090 GPU 架構與規格概覽
+- [[gpu-aio-cooler]] — GPU 一體式水冷（AIO）散熱設計原理與應用
+- [[12v-2x6-connector]] — 12V-2×6 PCIe 供電接頭規格與安全須知
+- [[gpu-tgp-power-modes]] — GPU TGP 與 vBIOS 功耗模式說明
+- [[gpu-vrm-architecture]] — GPU VRM 多相架構、PWM 控制器、MPS2522 並聯拓撲與 uP1666 過電流保護
+- [[tht-solder-quality]] — THT 通孔焊接品質、IPC-A-610 barrel fill 標準與高電流連接器的可靠性評估
+- [[thermal-interface-materials]] — GPU 散熱系統各位置的導熱介面材料種類、LIBS 分析結果與選用邏輯
+
+### Mouse（`hardware/mouse/`）
+
+#### 產品主條目
+
+- [[versa-300-wireless-8k]] — MSI Versa 300 Wireless 8K 主條目，PAW3395 感測器、8,000Hz、66g、£59.99
+
+#### 評測摘要頁
+
+- [[versa-300-wireless-8k-club386]] — Club386 評測：£59.99 高性價比 8,000Hz 無線滑鼠，Club386 Approved
+
+#### 概念頁
+
+- [[pixart-paw3395]] — PixArt PAW3395 光學感測器規格與市場定位
+- [[mouse-polling-rate]] — 滑鼠輪詢率原理：8,000Hz 的延遲優勢、CPU 消耗與電池代價
+
+---
+
+## 研究文庫（`wiki/research/`）
+
+收錄 AEO/GEO 以外的論文與 Podcast 筆記（例如 LLM、機器學習、行銷科學）。
 
 （待補充）
